@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dms085u3gklmr"]
+
+[ext_resource type="Script" path="res://enviroment/enviromental_obstacle.gd" id="1_h7nqc"]
+[ext_resource type="Texture2D" uid="uid://dsdoml66y53mn" path="res://assets/textures/player.png" id="1_kaxp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1udqd"]
+size = Vector2(64, 64)
+
+[node name="Wall" type="StaticBody2D"]
+scale = Vector2(1, 15)
+collision_layer = 15
+script = ExtResource("1_h7nqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kaxp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1udqd")

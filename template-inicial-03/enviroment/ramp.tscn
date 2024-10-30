@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsyaruemp7qj"]
+
+[ext_resource type="Script" path="res://enviroment/enviromental_obstacle.gd" id="1_dfts5"]
+
+[node name="Ramp" type="StaticBody2D"]
+collision_layer = 15
+script = ExtResource("1_dfts5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -128, 96, 64, -96, 64)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.462843, 0.280799, 0.100443, 1)
+polygon = PackedVector2Array(-96, 64, 0, -128, 96, 64)

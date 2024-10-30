@@ -1,0 +1,198 @@
+[gd_scene load_steps=18 format=3 uid="uid://dnfu1tjmwwled"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ymtxj"]
+[ext_resource type="Texture2D" uid="uid://6tdjlp40wua" path="res://assets/player/player_sheet.png" id="2_2md2i"]
+[ext_resource type="Script" path="res://player/state_machine.gd" id="2_a5872"]
+[ext_resource type="Script" path="res://player/state_idle.gd" id="3_3xemq"]
+[ext_resource type="Script" path="res://player/state_walk.gd" id="4_b6dpm"]
+[ext_resource type="Script" path="res://player/state_dead.gd" id="5_qp8bv"]
+[ext_resource type="PackedScene" uid="uid://clpvbb5flgssm" path="res://weapons/weapon_holder.tscn" id="7_qyvh2"]
+[ext_resource type="Texture2D" uid="uid://cwphyhn5hhusb" path="res://assets/player/staff.png" id="8_o4ott"]
+[ext_resource type="Script" path="res://weapons/weapon.gd" id="9_6r7qp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5ink"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_a4ejr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_5od4p"]
+resource_name = "dead"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_4odti"]
+resource_name = "fall"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_am4ga"]
+resource_name = "idle"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.233333, 0.433333, 0.633333, 0.833333, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ixj31"]
+resource_name = "jump"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_t7kjk"]
+resource_name = "walk"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.02, 0.22, 0.42, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_csvtm"]
+_data = {
+"RESET": SubResource("Animation_a4ejr"),
+"dead": SubResource("Animation_5od4p"),
+"fall": SubResource("Animation_4odti"),
+"idle": SubResource("Animation_am4ga"),
+"jump": SubResource("Animation_ixj31"),
+"walk": SubResource("Animation_t7kjk")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 5
+script = ExtResource("1_ymtxj")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("2_a5872")
+character_path = NodePath("..")
+start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_3xemq")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_b6dpm")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("5_qp8bv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_k5ink")
+
+[node name="FloorRayCast" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="FloorRayCast"]
+position = Vector2(-5, -3)
+target_position = Vector2(0, 4)
+
+[node name="RayCast2D2" type="RayCast2D" parent="FloorRayCast"]
+position = Vector2(0, -3)
+target_position = Vector2(0, 4)
+
+[node name="RayCast2D3" type="RayCast2D" parent="FloorRayCast"]
+position = Vector2(5, -3)
+target_position = Vector2(0, 4)
+
+[node name="SpritePivot" type="Node2D" parent="."]
+
+[node name="PlayerSprite" type="Sprite2D" parent="SpritePivot"]
+position = Vector2(-2, -11)
+texture = ExtResource("2_2md2i")
+hframes = 9
+vframes = 5
+frame = 1
+
+[node name="WeaponHolder" parent="." node_paths=PackedStringArray("current_weapon") instance=ExtResource("7_qyvh2")]
+position = Vector2(-4, -5)
+current_weapon = NodePath("Wand")
+
+[node name="Wand" type="Sprite2D" parent="WeaponHolder" node_paths=PackedStringArray("weapon_tip")]
+z_index = 1
+position = Vector2(1, 0)
+rotation = 1.5708
+texture = ExtResource("8_o4ott")
+script = ExtResource("9_6r7qp")
+weapon_tip = NodePath("WeaponTip")
+projectile_type = "player_wand"
+
+[node name="WeaponTip" type="Marker2D" parent="WeaponHolder/Wand"]
+position = Vector2(-2.18557e-07, -5)
+
+[node name="AttackSpeed" type="Timer" parent="WeaponHolder/Wand"]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_csvtm")
+}
+autoplay = "idle"
+
+[connection signal="timeout" from="WeaponHolder/Wand/AttackSpeed" to="WeaponHolder/Wand" method="_on_attack_speed_timeout"]

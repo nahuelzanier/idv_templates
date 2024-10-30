@@ -1,0 +1,5 @@
+res://main.tscn
+res://player/player.tscn
+res://projectiles/projectile_player.tscn
+res://projectiles/projectile.tscn
+res://enemies/turret.tscn

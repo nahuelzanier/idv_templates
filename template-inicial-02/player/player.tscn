@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnfu1tjmwwled"]
+
+[ext_resource type="Texture2D" uid="uid://bral0f7jhelmq" path="res://assets/textures/player.png" id="1_ovtkf"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_ymtxj"]
+[ext_resource type="Texture2D" uid="uid://ckxj78dkx1sk4" path="res://assets/textures/cannon.png" id="2_bssij"]
+[ext_resource type="Script" path="res://player/Cannon.gd" id="2_sql5d"]
+
+[node name="Player" type="Sprite2D"]
+texture = ExtResource("1_ovtkf")
+script = ExtResource("1_ymtxj")
+
+[node name="Cannon" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_bssij")
+script = ExtResource("2_sql5d")
+
+[node name="CannonTip" type="Marker2D" parent="Cannon"]
+position = Vector2(15, 0)

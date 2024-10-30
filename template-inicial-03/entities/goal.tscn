@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctxgg0hpbirbi"]
+
+[ext_resource type="Script" path="res://entities/goal.gd" id="1_qi6gx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87g6p"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_foakw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.467609, 0.467608, 2.88785e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aqaao"]
+resource_name = "shine"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.467609, 0.467608, 2.88785e-07, 1), Color(1, 1, 1, 1), Color(0.467609, 0.467608, 2.88785e-07, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eyjx"]
+_data = {
+"RESET": SubResource("Animation_foakw"),
+"shine": SubResource("Animation_aqaao")
+}
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_qi6gx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -19, -8, -3, -29, -2, -13, 10, -20, 28, 0, 20, 20, 28, 13, 10, 28, -2, 8, -3)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color(0.467609, 0.467608, 2.88785e-07, 1)
+polygon = PackedVector2Array(0, -14, -6, 0, -22, 0, -9, 9, -16, 24, 0, 16, 16, 24, 9, 9, 22, 0, 6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_87g6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8eyjx")
+}
+autoplay = "shine"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

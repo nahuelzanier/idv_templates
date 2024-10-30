@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=3 uid="uid://bguhqwqpcn6yo"]
+
+[ext_resource type="Texture2D" uid="uid://ba2s8o6til7nv" path="res://assets/fx/hits/hits-1/hits-1-5.png" id="2_3g0xe"]
+[ext_resource type="Script" path="res://projectiles/projectile.gd" id="2_27bya"]
+[ext_resource type="Texture2D" uid="uid://0cq8hr0esr8y" path="res://assets/fx/hits/hits-1/hits-1-4.png" id="3_5kxkd"]
+[ext_resource type="Texture2D" uid="uid://bmni5j56mfvsb" path="res://assets/fx/hits/hits-1/hits-1-3.png" id="4_8pm4j"]
+[ext_resource type="Texture2D" uid="uid://ca5out3vcnqi2" path="res://assets/fx/hits/hits-1/hits-1-2.png" id="5_u4vw0"]
+[ext_resource type="Texture2D" uid="uid://ciao4qb0v5jjs" path="res://assets/fx/hits/hits-1/hits-1-1.png" id="6_p85qn"]
+[ext_resource type="Texture2D" uid="uid://g030ld11ivsy" path="res://assets/fx/crossed/crossed1.png" id="7_n2k2a"]
+[ext_resource type="Texture2D" uid="uid://cyrijfougc8ds" path="res://assets/fx/crossed/crossed2.png" id="8_lsngr"]
+[ext_resource type="Texture2D" uid="uid://cvp4jpk0hc1mq" path="res://assets/fx/crossed/crossed3.png" id="9_ubu2g"]
+[ext_resource type="Texture2D" uid="uid://dq0attcwfumlh" path="res://assets/fx/crossed/crossed4.png" id="10_xaaf3"]
+[ext_resource type="Texture2D" uid="uid://bscrvudrldbs5" path="res://assets/fx/crossed/crossed5.png" id="11_5c31e"]
+[ext_resource type="Texture2D" uid="uid://35y42usxm7vb" path="res://assets/fx/crossed/crossed6.png" id="12_53lw0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pwiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3g0xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5kxkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8pm4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u4vw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p85qn")
+}],
+"loop": false,
+"name": &"fire_start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_n2k2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lsngr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ubu2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xaaf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5c31e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_53lw0")
+}],
+"loop": true,
+"name": &"traveling",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7kuc"]
+radius = 8.0
+
+[node name="Projectile" type="Area2D"]
+z_index = 3
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_27bya")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4pwiw")
+animation = &"traveling"
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j7kuc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

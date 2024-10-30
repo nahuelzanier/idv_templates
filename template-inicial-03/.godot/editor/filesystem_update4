@@ -1,0 +1,11 @@
+res://main.tscn
+res://player/player.tscn
+res://projectiles/projectile_player.tscn
+res://projectiles/projectile.tscn
+res://enemies/turret.tscn
+res://entities/goal.tscn
+res://entities/box.tscn
+res://enviroment/floor.tscn
+res://enviroment/platform.tscn
+res://enviroment/ramp.tscn
+res://enviroment/wall.tscn

@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1726979472
+icon.svg::CompressedTexture2D::7059716533367545456::1726931388::1726931392::1::::<><>::
+main.tscn::PackedScene::8949375032380086469::1726939356::0::1::::<><>::uid://c5w6pa1rv0gnm::::res://assets/textures/background.png<>uid://d0c04gqmledoc::::res://assets/textures/floor.png<>uid://dnfu1tjmwwled::::res://player/player.tscn<>uid://bral0f7jhelmq::::res://assets/textures/player.png
+::res://assets/::1726938913
+::res://assets/textures/::1726938463
+background.png::CompressedTexture2D::6925832041767192598::1726938463::1726938463::1::::<><>::
+cannon.png::CompressedTexture2D::5522815828840856697::1726938463::1726938463::1::::<><>::
+floor.png::CompressedTexture2D::8919681950797693370::1726938463::1726938463::1::::<><>::
+player.png::CompressedTexture2D::3580343869776640644::1726938463::1726938463::1::::<><>::
+proyectile_player.png::CompressedTexture2D::637181975995033453::1726938463::1726938463::1::::<><>::
+proyectile_turret.png::CompressedTexture2D::8773564253261936624::1726938463::1726938463::1::::<><>::
+turret.png::CompressedTexture2D::1495553619379791760::1726938463::1726938463::1::::<><>::
+::res://player/::1726939356
+player.gd::GDScript::-1::1726939321::0::1::::<>Sprite2D<>::
+player.tscn::PackedScene::8083300690063274119::1726939356::0::1::::<><>::res://player/player.gd

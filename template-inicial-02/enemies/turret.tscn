@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dno63lrxyfvjg"]
+
+[ext_resource type="Texture2D" uid="uid://vkpsxl2bsxdo" path="res://assets/textures/turret.png" id="1_tdw3k"]
+[ext_resource type="Script" path="res://enemies/turret.gd" id="2_npvbm"]
+
+[node name="Turret" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_tdw3k")
+script = ExtResource("2_npvbm")
+
+[node name="ShootingRate" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="ShootingRate" to="." method="_on_shooting_rate_timeout"]

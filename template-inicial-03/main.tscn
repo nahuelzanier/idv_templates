@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0re5tsv310m0"]
+
+[ext_resource type="Texture2D" uid="uid://bwss5w6fqk68h" path="res://assets/textures/background.png" id="1_cskd7"]
+[ext_resource type="Script" path="res://main.gd" id="1_lehhr"]
+[ext_resource type="Script" path="res://projectiles/ProjectileContainer.gd" id="2_y1t5j"]
+[ext_resource type="PackedScene" uid="uid://dnfu1tjmwwled" path="res://player/player.tscn" id="3_hg0i3"]
+[ext_resource type="Script" path="res://enemies/TurretSpawner.gd" id="3_jjtit"]
+[ext_resource type="PackedScene" uid="uid://vt6rypr8wkgf" path="res://enviroment/floor.tscn" id="5_cs4j8"]
+[ext_resource type="PackedScene" uid="uid://bsyaruemp7qj" path="res://enviroment/ramp.tscn" id="6_ywh6g"]
+[ext_resource type="PackedScene" uid="uid://beom8n6nuclqh" path="res://enviroment/platform.tscn" id="7_ax282"]
+[ext_resource type="PackedScene" uid="uid://dms085u3gklmr" path="res://enviroment/wall.tscn" id="8_sp3t8"]
+[ext_resource type="PackedScene" uid="uid://bk7isxbb6ebog" path="res://entities/box.tscn" id="10_sq5mr"]
+[ext_resource type="PackedScene" uid="uid://ctxgg0hpbirbi" path="res://entities/goal.tscn" id="11_21ube"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lehhr")
+
+[node name="ProjectileContainer" type="Node" parent="."]
+script = ExtResource("2_y1t5j")
+
+[node name="TurretSpawner" type="Node" parent="."]
+script = ExtResource("3_jjtit")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cskd7")
+
+[node name="Enviroment" type="Node2D" parent="."]
+
+[node name="Floor" parent="Enviroment" instance=ExtResource("5_cs4j8")]
+position = Vector2(550, 600)
+
+[node name="Floor2" parent="Enviroment" instance=ExtResource("5_cs4j8")]
+position = Vector2(1870, 600)
+
+[node name="Ramp" parent="Enviroment" instance=ExtResource("6_ywh6g")]
+position = Vector2(380, 548)
+rotation = 0.694417
+
+[node name="Ramp2" parent="Enviroment" instance=ExtResource("6_ywh6g")]
+position = Vector2(808, 548)
+rotation = -0.690283
+
+[node name="Ramp3" parent="Enviroment" instance=ExtResource("6_ywh6g")]
+position = Vector2(1367, 470)
+
+[node name="Ramp4" parent="Enviroment" instance=ExtResource("6_ywh6g")]
+position = Vector2(1480, 365)
+rotation = 0.785398
+
+[node name="Platform" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(528, 466)
+
+[node name="Platform2" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(661, 466)
+
+[node name="Platform3" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(1884, 230)
+
+[node name="Platform4" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(2180, 367)
+
+[node name="Platform5" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(2182, 59)
+
+[node name="Platform6" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(1873, -61)
+
+[node name="Platform7" parent="Enviroment" instance=ExtResource("7_ax282")]
+position = Vector2(1606, -236)
+
+[node name="Wall" parent="Enviroment" instance=ExtResource("8_sp3t8")]
+position = Vector2(-83, 186)
+
+[node name="Wall2" parent="Enviroment" instance=ExtResource("8_sp3t8")]
+position = Vector2(2560, 186)
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("3_hg0i3")]
+position = Vector2(142, 453)
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+
+[node name="Box" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(544, 321)
+
+[node name="Box2" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(594, 321)
+
+[node name="Box3" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(644, 322)
+
+[node name="Box4" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(529, 403)
+
+[node name="Box5" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(649, 401)
+
+[node name="Box6" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(587, 403)
+
+[node name="Box7" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(535, 245)
+
+[node name="Box8" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(575, 239)
+
+[node name="Box9" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(621, 248)
+
+[node name="Box10" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(2224, 305)
+
+[node name="Box11" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(2242, -10)
+
+[node name="Box12" parent="Entities" instance=ExtResource("10_sq5mr")]
+position = Vector2(1853, -125)
+
+[node name="Goal" parent="Entities" instance=ExtResource("11_21ube")]
+position = Vector2(1606, -282)

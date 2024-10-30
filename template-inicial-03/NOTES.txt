@@ -1,0 +1,14 @@
+- change player to character body 2d
+- cambiamos cannon por weapon
+- added GRAVITY to player
+- delete floor and add static bodies2d, adjust scale
+- add camera on player, offset y -180
+
+- crear las cajas, para que funcione la colision hay que mantener los rigid 
+en layers separados del player >> despues que el rigid detecte al player pero el player no al rigid
+
+- change the turret spawner coordinates
+- change turret to static body
+
+- create goal area2d
+- trigger on body, set layers, animation player color

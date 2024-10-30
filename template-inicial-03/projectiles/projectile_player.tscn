@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://mi6ot131gcaq"]
+
+[ext_resource type="Texture2D" uid="uid://dv5lvora6uf02" path="res://assets/textures/proyectile_player.png" id="1_pymxp"]
+[ext_resource type="Script" path="res://projectiles/projectile.gd" id="2_xy7sw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jn1r"]
+radius = 8.0
+
+[node name="ProjectilePlayer" type="Area2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_xy7sw")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pymxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2jn1r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
