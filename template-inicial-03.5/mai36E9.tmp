@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0re5tsv310m0"]
+
+[ext_resource type="Texture2D" uid="uid://c5w6pa1rv0gnm" path="res://assets/textures/background.png" id="1_cskd7"]
+[ext_resource type="Script" path="res://main.gd" id="1_lehhr"]
+[ext_resource type="Texture2D" uid="uid://d0c04gqmledoc" path="res://assets/textures/floor.png" id="2_b475t"]
+[ext_resource type="Script" path="res://projectiles/ProjectileContainer.gd" id="2_y1t5j"]
+[ext_resource type="PackedScene" uid="uid://dnfu1tjmwwled" path="res://player/player.tscn" id="3_hg0i3"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lehhr")
+
+[node name="ProjectileContainer" type="Node" parent="."]
+script = ExtResource("2_y1t5j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cskd7")
+
+[node name="Floor" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -193.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_b475t")
+
+[node name="Player" parent="." instance=ExtResource("3_hg0i3")]
+position = Vector2(600, 430)

@@ -1,0 +1,6 @@
+res://main.tscn
+res://enviroment/terrain_tile_set.tres
+res://player/player.tscn
+res://NOTES.txt
+res://enemies/turret.tscn
+res://player/player.gd

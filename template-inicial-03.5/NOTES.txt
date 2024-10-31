@@ -1,0 +1,28 @@
+- player sprite 9 x 5 sheet
+- player collision shape capsule
+- sprite pivot
+- camera x4, resolution 1600x900, offset -40
+- player animations
+
+- player animations with ifs
+
+- deleted all platforms
+- added tilemaplayer
+- create autotile (paint) with ruin terrains 
+- tile patterns
+- add pysics layer and set the collisions
+- layers: details, walls, modulate, disable collision on details
+
+- change blocks for barrels
+- turn goal into a door
+
+- weapon holder class
+- move the player weapon to it s own pivot and generalize the weapon shooting
+- adjust the weapon position and rotation
+- animation must not be looping
+- changed fire-signal to pass the weapon
+
+- change speed and jump variables
+- turret animated sprite
+- crear el spawn area como @tool
+- turret cambiar a kinematic, alterar la weapon para que sea generica

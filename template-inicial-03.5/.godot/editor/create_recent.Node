@@ -1,0 +1,15 @@
+RayCast2D
+Node2D
+AnimatedSprite2D
+Timer
+Marker2D
+CharacterBody2D
+ColorRect
+Polygon2D
+Sprite2D
+CollisionShape2D
+StaticBody2D
+TileMapLayer
+TileMap
+Node
+AnimationPlayer
