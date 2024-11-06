@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnfu1tjmwwled"]
+[gd_scene load_steps=14 format=3 uid="uid://dnfu1tjmwwled"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_ymtxj"]
 [ext_resource type="Texture2D" uid="uid://6tdjlp40wua" path="res://assets/player/player_sheet.png" id="2_2md2i"]
 [ext_resource type="Script" path="res://src/weapons/wand.gd" id="5_l5b33"]
 [ext_resource type="PackedScene" uid="uid://mi6ot131gcaq" path="res://src/projectiles/projectile_player.tscn" id="6_q1xlj"]
-[ext_resource type="PackedScene" uid="uid://clpvbb5flgssm" path="res://src/weapons/weapon_holder.tscn" id="7_qyvh2"]
 [ext_resource type="Texture2D" uid="uid://cwphyhn5hhusb" path="res://assets/player/staff.png" id="8_o4ott"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5ink"]
@@ -139,25 +138,21 @@ hframes = 9
 vframes = 5
 frame = 1
 
-[node name="WeaponHolder" parent="." node_paths=PackedStringArray("current_weapon") instance=ExtResource("7_qyvh2")]
-position = Vector2(-4, 1)
-current_weapon = NodePath("Wand")
-
-[node name="Wand" type="Node2D" parent="WeaponHolder" node_paths=PackedStringArray("weapon_tip")]
+[node name="Wand" type="Node2D" parent="." node_paths=PackedStringArray("weapon_tip")]
 z_index = 1
-position = Vector2(1, 0)
+position = Vector2(-3, 1)
 script = ExtResource("5_l5b33")
 PROJECTILE = ExtResource("6_q1xlj")
 weapon_tip = NodePath("WeaponTip")
 
-[node name="Sprite2D" type="Sprite2D" parent="WeaponHolder/Wand"]
+[node name="Sprite2D" type="Sprite2D" parent="Wand"]
 rotation = 1.5708
 texture = ExtResource("8_o4ott")
 
-[node name="WeaponTip" type="Marker2D" parent="WeaponHolder/Wand"]
+[node name="WeaponTip" type="Marker2D" parent="Wand"]
 position = Vector2(5, 0)
 
-[node name="AttackSpeed" type="Timer" parent="WeaponHolder/Wand"]
+[node name="AttackSpeed" type="Timer" parent="Wand"]
 wait_time = 0.5
 one_shot = true
 
@@ -167,4 +162,4 @@ libraries = {
 }
 autoplay = "idle"
 
-[connection signal="timeout" from="WeaponHolder/Wand/AttackSpeed" to="WeaponHolder/Wand" method="_on_attack_speed_timeout"]
+[connection signal="timeout" from="Wand/AttackSpeed" to="Wand" method="_on_attack_speed_timeout"]

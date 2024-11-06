@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk7isxbb6ebog"]
+[gd_scene load_steps=3 format=3 uid="uid://bk7isxbb6ebog"]
 
 [ext_resource type="Texture2D" uid="uid://dtrbf7tytesmt" path="res://assets/items/Barrel-pixel-oleo.png" id="1_m541v"]
-[ext_resource type="Script" path="res://src/entities/box.gd" id="1_pg6uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_redjj"]
 size = Vector2(14, 16)
@@ -9,7 +8,6 @@ size = Vector2(14, 16)
 [node name="Box" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_pg6uo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

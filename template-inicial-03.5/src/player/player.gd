@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@onready var weapon_holder = $WeaponHolder
-@onready var sprite_pivot = $SpritePivot
-@onready var player_sprite = $SpritePivot/PlayerSprite
-@onready var anim_player = $AnimationPlayer
+@onready var weapon : Weapon = $Wand
+@onready var sprite_pivot : Node2D = $SpritePivot
+@onready var player_sprite : Sprite2D = $SpritePivot/PlayerSprite
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 @export var JUMP : float = 400
 @export var MAX_SPEED : float = 250
@@ -13,16 +13,16 @@ extends CharacterBody2D
 
 var move_direction = 0
 
-func _ready():
+func _ready() -> void:
 	add_to_group("PLAYER")
 
-func _input(event):
+func _input(event) -> void:
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y -= JUMP
 	if event.is_action_pressed("fire_cannon"):
-		weapon_holder.activate_weapon()
+		weapon.activate_weapon()
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	velocity.y += GRAVITY
 	move_direction = Input.get_axis("move_left", "move_right")
 	if move_direction != 0:
@@ -40,12 +40,11 @@ func _physics_process(delta):
 		else: anim_player.play("fall")
 	move_and_slide()
 
-func initialize(projectile_container):
-	weapon_holder.initialize(projectile_container)
+func initialize(projectile_container) -> void:
+	weapon.initialize(projectile_container)
 
-func notify_hit(bullet):
+func notify_hit() -> void:
 	print("PLAYER DAMAGE...")
-	bullet.call_deferred("explode")
 
-func play_animation(animation):
+func play_animation(animation) -> void:
 	anim_player.play(animation)

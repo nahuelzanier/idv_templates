@@ -1,31 +1,30 @@
 extends CharacterBody2D
 
-@onready var weapon_holder = $WeaponHolder
-@onready var ray_cast = $RayCast2D
+@onready var weapon : Weapon = $TurretWeapon
+@onready var ray_cast : RayCast2D = $RayCast2D
 
-var target = null
+var target : Node2D = null
 
-func initialize(initial_position, projectile_container):
+func initialize(initial_position, projectile_container) -> void:
 	global_position = initial_position
-	weapon_holder.initialize(projectile_container)
+	weapon.initialize(projectile_container)
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if target:
-		weapon_holder.look_at(target.global_position)
+		weapon.look_at(target.global_position)
 		ray_cast.rotation = ray_cast.global_position.direction_to(target.global_position).angle()-PI/2
 		shoot()
 
-func shoot():
+func shoot() -> void:
 	if ray_cast.get_collider() and ray_cast.get_collider().is_in_group("PLAYER"):
-		weapon_holder.activate_weapon()
+		weapon.activate_weapon()
 
-func notify_hit(bullet):
+func notify_hit() -> void:
 	print("TURRET HIT!!")
-	bullet.call_deferred("explode")
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body) -> void:
 	target = body
 	shoot()
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(body) -> void:
 	target = null #no chequeamos porque porque el unico que esta en el layer 3 es el player
