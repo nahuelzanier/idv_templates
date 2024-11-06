@@ -1,11 +1,6 @@
-res://game
+res://src/projectiles
+res://src/weapons
 res://assets/enemies/golem
-res://weapons
 res://
-res://player
 res://assets/items
-res://enviroment
-res://entities
 C:/Nahuel/Facultad/idv/TEMPLATESGODOT4/template-inicial-03
-res://enemies
-res://projectiles

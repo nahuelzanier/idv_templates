@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch0m50uoeu2p0"]
-
-[ext_resource type="Script" path="res://game/area_marker.gd" id="1_2il48"]
-
-[node name="SpawnArea" type="Marker2D"]
-script = ExtResource("1_2il48")
-size_x = 50.0
-size_y = 50.0
