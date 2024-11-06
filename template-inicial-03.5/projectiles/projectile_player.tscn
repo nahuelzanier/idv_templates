@@ -1,20 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://mi6ot131gcaq"]
+[gd_scene load_steps=21 format=3 uid="uid://mi6ot131gcaq"]
 
+[ext_resource type="Script" path="res://projectiles/projectile_player.gd" id="1_y710l"]
+[ext_resource type="Texture2D" uid="uid://d43kg7a20piq" path="res://assets/fx/hits/hits-3/hits-3-1.png" id="2_33b2e"]
 [ext_resource type="Texture2D" uid="uid://cmy8ojirm8sru" path="res://assets/fx/pulse/pulse1.png" id="2_qe131"]
 [ext_resource type="Texture2D" uid="uid://ceygodbnqt07c" path="res://assets/fx/hits/hits-5/hits-5-1.png" id="2_s1vx6"]
-[ext_resource type="Script" path="res://projectiles/projectile.gd" id="2_xy7sw"]
+[ext_resource type="Texture2D" uid="uid://6wpp3kers51x" path="res://assets/fx/hits/hits-3/hits-3-2.png" id="3_ckv3c"]
 [ext_resource type="Texture2D" uid="uid://dnyd3x60h05dv" path="res://assets/fx/pulse/pulse2.png" id="3_gsjxq"]
 [ext_resource type="Texture2D" uid="uid://dfebwie15sasl" path="res://assets/fx/hits/hits-5/hits-5-2.png" id="3_ymd0t"]
+[ext_resource type="Texture2D" uid="uid://bmrwbs616unhv" path="res://assets/fx/hits/hits-3/hits-3-3.png" id="4_3qrih"]
 [ext_resource type="Texture2D" uid="uid://hdqfryg7cin1" path="res://assets/fx/hits/hits-5/hits-5-3.png" id="4_itq2n"]
 [ext_resource type="Texture2D" uid="uid://d0s4pq372jdpt" path="res://assets/fx/pulse/pulse3.png" id="4_t8mh5"]
 [ext_resource type="Texture2D" uid="uid://b2qyx2gnsidcb" path="res://assets/fx/pulse/pulse4.png" id="5_a3364"]
 [ext_resource type="Texture2D" uid="uid://86b57oj4qaw7" path="res://assets/fx/hits/hits-5/hits-5-4.png" id="5_f2t8m"]
+[ext_resource type="Texture2D" uid="uid://b75mqgltne4mi" path="res://assets/fx/hits/hits-3/hits-3-4.png" id="5_klh70"]
 [ext_resource type="Texture2D" uid="uid://cd7vn16jyh0n6" path="res://assets/fx/hits/hits-5/hits-5-5.png" id="6_1rvvb"]
+[ext_resource type="Texture2D" uid="uid://c0r0sw6j85m6b" path="res://assets/fx/hits/hits-3/hits-3-5.png" id="6_a5iai"]
 [ext_resource type="Texture2D" uid="uid://0g12p2ecmfpl" path="res://assets/fx/hits/hits-5/hits-5-6.png" id="7_4ue43"]
 [ext_resource type="Texture2D" uid="uid://b4l168n5k0f4f" path="res://assets/fx/hits/hits-5/hits-5-7.png" id="8_plycy"]
+[ext_resource type="Script" path="res://game/animated_sprite_2d.gd" id="13_v08uc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dg03r"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33b2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ckv3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3qrih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_klh70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a5iai")
+}],
+"loop": false,
+"name": &"collision",
+"speed": 14.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_s1vx6")
@@ -62,19 +88,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jn1r"]
 radius = 3.0
 
-[node name="ProjectilePlayer" type="Area2D"]
+[node name="ProjectilePlayer" type="Area2D" node_paths=PackedStringArray("anim_node")]
 z_index = 1
 collision_layer = 0
-collision_mask = 8
-script = ExtResource("2_xy7sw")
-VELOCITY = 300.0
+collision_mask = 10
+script = ExtResource("1_y710l")
+anim_node = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
-position = Vector2(3, 0)
+position = Vector2(-4.76837e-07, 0)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_dg03r")
-animation = &"traveling"
+animation = &"collision"
+script = ExtResource("13_v08uc")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -82,9 +109,10 @@ one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 0)
+position = Vector2(7, 0)
 shape = SubResource("CircleShape2D_2jn1r")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="." to="." method="_on_collision"]
+[connection signal="body_entered" from="." to="." method="_on_collision"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_node_animation_finished"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

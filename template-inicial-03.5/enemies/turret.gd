@@ -21,7 +21,7 @@ func shoot():
 
 func notify_hit(bullet):
 	print("TURRET HIT!!")
-	bullet.call_deferred("queue_free")
+	bullet.call_deferred("explode")
 
 func _on_area_2d_body_entered(body):
 	target = body

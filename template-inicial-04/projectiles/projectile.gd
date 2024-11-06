@@ -17,7 +17,8 @@ func _ready():
 
 func _process(delta):
 	if animated_sprite_2d.animation == "fire_start":
-		global_position = origin_weapon.weapon_tip.global_position
+		if origin_weapon:
+			global_position = origin_weapon.weapon_tip.global_position
 	if animated_sprite_2d.animation == "traveling":
 		position += direction * VELOCITY * delta
 
@@ -29,8 +30,10 @@ func _on_body_entered(body):
 		body.notify_hit(self)
 
 func _on_animated_sprite_2d_animation_finished():
-	if animated_sprite_2d.animation == "fire_start":
-		rotation = (origin_weapon.weapon_tip.global_position - origin_weapon.global_position).angle()
+	if origin_weapon and animated_sprite_2d.animation == "fire_start":
 		direction = origin_weapon.global_position.direction_to(origin_weapon.weapon_tip.global_position)
+		rotation = direction.angle()
 		animated_sprite_2d.play("traveling")
 		collision_shape_2d.disabled = false
+	else:
+		queue_free()

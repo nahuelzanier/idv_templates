@@ -1,10 +1,10 @@
 extends Node
 
-const PROJECTILE = preload("res://projectiles/projectile.tscn")
+const PROJECTILE_ENEMY = preload("res://projectiles/projectile_enemy.tscn")
 const PROJECTILE_PLAYER_WAND = preload("res://projectiles/projectile_player.tscn")
 
 var projectile_dict = {
-	"turret" : PROJECTILE,
+	"turret" : PROJECTILE_ENEMY,
 	"player_wand" : PROJECTILE_PLAYER_WAND
 }
 

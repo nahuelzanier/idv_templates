@@ -1,7 +1,8 @@
 extends Area2D
+class_name Projectile
 
 @export var VELOCITY : float = 200.0
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@export var anim_node : Node
 @onready var collision_shape_2d = $CollisionShape2D
 
 var origin_weapon
@@ -12,28 +13,32 @@ func initialize(weapon):
 	global_position = weapon.weapon_tip.global_position
 
 func _ready():
-	animated_sprite_2d.play("fire_start")
+	anim_node.play("fire_start")
 	collision_shape_2d.disabled = true
 
 func _process(delta):
-	if animated_sprite_2d.animation == "fire_start":
+	if anim_node.return_animation() == "fire_start":
 		if origin_weapon:
 			global_position = origin_weapon.weapon_tip.global_position
-	if animated_sprite_2d.animation == "traveling":
+			rotation = origin_weapon.global_position.direction_to(origin_weapon.weapon_tip.global_position).angle()
+	if anim_node.return_animation() == "traveling":
 		position += direction * VELOCITY * delta
 
 func _on_despawn_timer_timeout():
 	queue_free()
 
-func _on_body_entered(body):
-	if body.has_method("notify_hit"):
-		body.notify_hit(self)
+func _on_collision(collider):
+	if collider.has_method("notify_hit"):
+		collider.notify_hit(self)
 
-func _on_animated_sprite_2d_animation_finished():
-	if origin_weapon and animated_sprite_2d.animation == "fire_start":
+func explode():
+	anim_node.play("collision")
+
+func _on_anim_node_animation_finished(animation = "placeholder"):
+	if origin_weapon and (anim_node.return_animation() == "fire_start" or animation == "fire_start"):
 		direction = origin_weapon.global_position.direction_to(origin_weapon.weapon_tip.global_position)
 		rotation = direction.angle()
-		animated_sprite_2d.play("traveling")
+		anim_node.play("traveling")
 		collision_shape_2d.disabled = false
 	else:
 		queue_free()

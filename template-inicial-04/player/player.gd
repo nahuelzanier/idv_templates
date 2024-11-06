@@ -31,6 +31,14 @@ func _physics_process(delta):
 		velocity.x = clamp(velocity.x + (ACCELERATION * move_direction), -MAX_SPEED, MAX_SPEED)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, FRICTION)
+	#if is_on_floor():
+	#	if abs(velocity.x) < 30:
+	#			anim_player.play("idle")
+	#	else:
+	#		anim_player.play("walk")
+	#else:
+	#	if velocity.y < 0: anim_player.play("jump")
+	#	else: anim_player.play("fall")
 	move_and_slide()
 
 func initialize(projectile_container):

@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1730411948
+::res://::1730850143
 icon.svg::CompressedTexture2D::7059716533367545456::1726931388::1726931392::1::::<><>::
-main.tscn::PackedScene::8949375032380086469::1730391291::0::1::::<><>::res://game/main.gd<>res://projectiles/ProjectileContainer.gd<>uid://dnfu1tjmwwled::::res://player/player.tscn<>res://enemies/TurretSpawner.gd<>uid://dbd0gvuxi5afd::::res://enviroment/terrain_tile_set.tres<>uid://ch0m50uoeu2p0::::res://game/spawn_area.tscn<>uid://bqubymdl8ix6u::::res://enviroment/platform.tscn<>uid://bk7isxbb6ebog::::res://entities/box.tscn<>uid://ctxgg0hpbirbi::::res://entities/goal.tscn
-NOTES.txt::TextFile::-1::1730391352::0::1::::<><>::
+main.tscn::PackedScene::8949375032380086469::1730850143::0::1::::<><>::res://game/main.gd<>res://projectiles/ProjectileContainer.gd<>uid://dnfu1tjmwwled::::res://player/player.tscn<>res://enemies/TurretSpawner.gd<>uid://dbd0gvuxi5afd::::res://enviroment/terrain_tile_set.tres<>uid://ch0m50uoeu2p0::::res://game/spawn_area.tscn<>uid://bqubymdl8ix6u::::res://enviroment/platform.tscn<>uid://bk7isxbb6ebog::::res://entities/box.tscn<>uid://ctxgg0hpbirbi::::res://entities/goal.tscn
+NOTES.txt::TextFile::-1::1730848828::0::1::::<><>::
 ::res://assets/::1730391725
 gray_square.png::CompressedTexture2D::2020702311324043650::1616860233::1727000518::1::::<><>::
 green_circle.png::CompressedTexture2D::47420171102483883::1616860233::1727000518::1::::<><>::
@@ -132,29 +132,33 @@ turret.png::CompressedTexture2D::5127085878545819475::1726952394::1726952411::1:
 ::res://assets/tileset/ruins/::1730391725
 Dungeon Ruins Tileset Day.png::CompressedTexture2D::1291586552144133103::1593828563::1727000518::1::::<><>::
 ruins-day.png::CompressedTexture2D::8964291065827182831::1694099202::1727000518::1::::<><>::
-::res://enemies/::1730391725
+::res://enemies/::1730850144
 turret.gd::GDScript::-1::1730321815::0::1::::<>CharacterBody2D<>::
-turret.tscn::PackedScene::8102551141031493076::1730391291::0::1::::<><>::uid://epjic4c5eaj2::::res://assets/enemies/golem/Golem_IdleA.png<>res://enemies/turret.gd<>uid://clpvbb5flgssm::::res://weapons/weapon_holder.tscn<>res://weapons/weapon.gd
+turret.tscn::PackedScene::8102551141031493076::1730850144::0::1::::<><>::uid://epjic4c5eaj2::::res://assets/enemies/golem/Golem_IdleA.png<>res://enemies/turret.gd<>uid://clpvbb5flgssm::::res://weapons/weapon_holder.tscn<>res://weapons/weapon.gd
 TurretSpawner.gd::GDScript::-1::1730321553::0::1::::<>Node<>::
 ::res://entities/::1730391725
 box.tscn::PackedScene::3154888298104635990::1730245971::0::1::::<><>::uid://dtrbf7tytesmt::::res://assets/items/Barrel-pixel-oleo.png
 goal.gd::GDScript::-1::1730245072::0::1::::<>Area2D<>::
 goal.tscn::PackedScene::6154286426152806750::1730245971::0::1::::<><>::res://entities/goal.gd<>uid://bxut6rr0pqvp7::::res://assets/items/portal.png
-::res://enviroment/::1730391725
+::res://enviroment/::1730848578
 platform.tscn::PackedScene::3550833948488144510::1730385382::0::1::::<><>::uid://snwihsejy0jj::::res://assets/tileset/ruins/Dungeon Ruins Tileset Day.png
-terrain_tile_set.tres::TileSet::7237173802505431933::1730390202::0::1::::<><>::uid://d0ymtgfspgc7h::::res://assets/tileset/ruins/ruins-day.png<>uid://snwihsejy0jj::::res://assets/tileset/ruins/Dungeon Ruins Tileset Day.png
+terrain_tile_set.tres::TileSet::7237173802505431933::1730848578::0::1::::<><>::uid://d0ymtgfspgc7h::::res://assets/tileset/ruins/ruins-day.png<>uid://snwihsejy0jj::::res://assets/tileset/ruins/Dungeon Ruins Tileset Day.png
 ::res://game/::1730391725
 area_marker.gd::GDScript::-1::1730318589::0::1::::<>Marker2D<>::
 main.gd::GDScript::-1::1730315051::0::1::::<>Node<>::
 spawn_area.tscn::PackedScene::5316556239056368675::1730385382::0::1::::<><>::res://game/area_marker.gd
-::res://player/::1730391725
+::res://player/::1730850144
 player.gd::GDScript::-1::1730391040::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::8083300690063274119::1730391352::0::1::::<><>::res://player/player.gd<>uid://6tdjlp40wua::::res://assets/player/player_sheet.png<>uid://clpvbb5flgssm::::res://weapons/weapon_holder.tscn<>uid://cwphyhn5hhusb::::res://assets/player/staff.png<>res://weapons/weapon.gd
-::res://projectiles/::1730391725
-projectile.gd::GDScript::-1::1730384731::0::1::::<>Area2D<>::
-projectile.tscn::PackedScene::2849296073169659938::1730385382::0::1::::<><>::uid://ba2s8o6til7nv::::res://assets/fx/hits/hits-1/hits-1-5.png<>res://projectiles/projectile.gd<>uid://0cq8hr0esr8y::::res://assets/fx/hits/hits-1/hits-1-4.png<>uid://bmni5j56mfvsb::::res://assets/fx/hits/hits-1/hits-1-3.png<>uid://ca5out3vcnqi2::::res://assets/fx/hits/hits-1/hits-1-2.png<>uid://ciao4qb0v5jjs::::res://assets/fx/hits/hits-1/hits-1-1.png<>uid://g030ld11ivsy::::res://assets/fx/crossed/crossed1.png<>uid://cyrijfougc8ds::::res://assets/fx/crossed/crossed2.png<>uid://cvp4jpk0hc1mq::::res://assets/fx/crossed/crossed3.png<>uid://dq0attcwfumlh::::res://assets/fx/crossed/crossed4.png<>uid://bscrvudrldbs5::::res://assets/fx/crossed/crossed5.png<>uid://35y42usxm7vb::::res://assets/fx/crossed/crossed6.png
-ProjectileContainer.gd::GDScript::-1::1730308791::0::1::::<>Node<>::
-projectile_player.tscn::PackedScene::860689412995038056::1730385382::0::1::::<><>::uid://cmy8ojirm8sru::::res://assets/fx/pulse/pulse1.png<>uid://ceygodbnqt07c::::res://assets/fx/hits/hits-5/hits-5-1.png<>res://projectiles/projectile.gd<>uid://dnyd3x60h05dv::::res://assets/fx/pulse/pulse2.png<>uid://dfebwie15sasl::::res://assets/fx/hits/hits-5/hits-5-2.png<>uid://hdqfryg7cin1::::res://assets/fx/hits/hits-5/hits-5-3.png<>uid://d0s4pq372jdpt::::res://assets/fx/pulse/pulse3.png<>uid://b2qyx2gnsidcb::::res://assets/fx/pulse/pulse4.png<>uid://86b57oj4qaw7::::res://assets/fx/hits/hits-5/hits-5-4.png<>uid://cd7vn16jyh0n6::::res://assets/fx/hits/hits-5/hits-5-5.png<>uid://0g12p2ecmfpl::::res://assets/fx/hits/hits-5/hits-5-6.png<>uid://b4l168n5k0f4f::::res://assets/fx/hits/hits-5/hits-5-7.png
+player.tscn::PackedScene::8083300690063274119::1730850144::0::1::::<><>::res://player/player.gd<>uid://6tdjlp40wua::::res://assets/player/player_sheet.png<>res://player/animation_player.gd<>uid://clpvbb5flgssm::::res://weapons/weapon_holder.tscn<>uid://cwphyhn5hhusb::::res://assets/player/staff.png<>res://weapons/weapon.gd
+animation_player.gd::GDScript::-1::1730850142::0::1::::<>AnimationPlayer<>::
+::res://projectiles/::1730850144
+projectile.gd::GDScript::-1::1730849778::0::1::::Projectile<>Area2D<>::
+ProjectileContainer.gd::GDScript::-1::1730848479::0::1::::<>Node<>::
+projectile_enemy.gd::GDScript::-1::1730849941::0::1::::<>Projectile<>::
+projectile_enemy.tscn::PackedScene::2849296073169659938::1730850144::0::1::::<><>::res://projectiles/projectile_enemy.gd<>uid://hbf0ge21tjqh::::res://assets/enemies/golem/Golem_AttackA.png
+projectile_player.gd::GDScript::-1::1730849963::0::1::::<>Projectile<>::
+projectile_player.tscn::PackedScene::860689412995038056::1730850144::0::1::::<><>::res://projectiles/projectile_player.gd<>uid://cmy8ojirm8sru::::res://assets/fx/pulse/pulse1.png<>uid://ceygodbnqt07c::::res://assets/fx/hits/hits-5/hits-5-1.png<>uid://dnyd3x60h05dv::::res://assets/fx/pulse/pulse2.png<>uid://dfebwie15sasl::::res://assets/fx/hits/hits-5/hits-5-2.png<>uid://hdqfryg7cin1::::res://assets/fx/hits/hits-5/hits-5-3.png<>uid://d0s4pq372jdpt::::res://assets/fx/pulse/pulse3.png<>uid://b2qyx2gnsidcb::::res://assets/fx/pulse/pulse4.png<>uid://86b57oj4qaw7::::res://assets/fx/hits/hits-5/hits-5-4.png<>uid://cd7vn16jyh0n6::::res://assets/fx/hits/hits-5/hits-5-5.png<>uid://0g12p2ecmfpl::::res://assets/fx/hits/hits-5/hits-5-6.png<>uid://b4l168n5k0f4f::::res://assets/fx/hits/hits-5/hits-5-7.png
+animation_player.gd::GDScript::-1::1730850198::0::1::::<>AnimationPlayer<>::
 ::res://weapons/::1730391725
 weapon.gd::GDScript::-1::1730319484::0::1::::<>Node2D<>::
 weapon_holder.gd::GDScript::-1::1730322496::0::1::::<>Node2D<>::

@@ -26,3 +26,7 @@
 - turret animated sprite
 - crear el spawn area como @tool
 - turret cambiar a kinematic, alterar la weapon para que sea generica
+
+- turret missiles to shards with atlas texture
+- animPlayer and animated sprite create function return animation to make it polymorphic
+- explosions, set in every notify hit

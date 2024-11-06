@@ -45,7 +45,7 @@ func initialize(projectile_container):
 
 func notify_hit(bullet):
 	print("PLAYER DAMAGE...")
-	bullet.call_deferred("queue_free")
+	bullet.call_deferred("explode")
 
 func play_animation(animation):
 	anim_player.play(animation)

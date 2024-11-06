@@ -45,7 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0i5yx"]
-radius = 99.1816
+radius = 121.0
 
 [node name="Turret" type="CharacterBody2D"]
 z_index = 1
@@ -85,7 +85,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_0i5yx")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 100)
+target_position = Vector2(0, 122)
 collision_mask = 3
 
 [connection signal="timeout" from="WeaponHolder/TurretWeapon/AttackSpeed" to="WeaponHolder/TurretWeapon" method="_on_attack_speed_timeout"]
